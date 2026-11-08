@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.PathInterpolator;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
@@ -98,6 +99,17 @@ public abstract class AbsSlidingMusicPanelActivity extends AbsMusicServiceActivi
 
         statusBarCollapsedColor = ThemeStore.primaryColor(this);
         statusBarExpandedColor = Color.TRANSPARENT;
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (!handleBackPress()) {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                    setEnabled(true);
+                }
+            }
+        });
     }
 
     @Override

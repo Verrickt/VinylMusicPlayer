@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.11.0-rev4] - 2026-11-09
+
+### Fixes & Improvements
+
+* **Navigation & Predictive Back**:
+  * Fix back press on Android 13+ / Android 14+ / Android 16 directly exiting to desktop when playing queue or player panel was expanded
+  * Register `OnBackPressedCallback` via `OnBackPressedDispatcher` in `AbsSlidingMusicPanelActivity` to properly handle back gestures/buttons and collapse expanded playlists and player panels
+  * Remove application-level `enableOnBackInvokedCallback` from `AndroidManifest.xml` to avoid bypassing legacy activity `onBackPressed` handlers across unmigrated screens
+
 ## [1.11.0-rev3] - 2026-11-09
 
 ### Fixes & Improvements

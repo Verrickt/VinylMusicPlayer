@@ -37,7 +37,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinylMusicPlayer.Light"
         android:resizeableActivity="true"
-        android:enableOnBackInvokedCallback="true"
         tools:ignore="UnusedAttribute"
         android:fullBackupOnly="true">
         <activity android:name="com.poupa.vinylmusicplayer.ui.activities.MainActivity"
