@@ -4,18 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.RSRuntimeException;
-import android.renderscript.RenderScript;
-import android.renderscript.ScriptIntrinsicBlur;
-
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.poupa.vinylmusicplayer.BuildConfig;
 import com.poupa.vinylmusicplayer.helper.StackBlur;
 import com.poupa.vinylmusicplayer.util.ImageUtil;
 
@@ -115,27 +108,6 @@ public class BlurTransformation extends BitmapTransformation {
         Paint paint = new Paint();
         paint.setFlags(Paint.FILTER_BITMAP_FLAG);
         canvas.drawBitmap(toTransform, 0, 0, paint);
-
-        try {
-            final RenderScript rs = RenderScript.create(context.getApplicationContext());
-            final Allocation input = Allocation.createFromBitmap(rs, out, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
-            final Allocation output = Allocation.createTyped(rs, input.getType());
-            final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
-
-            script.setRadius(blurRadius);
-            script.setInput(input);
-            script.forEach(output);
-
-            output.copyTo(out);
-
-            rs.destroy();
-
-            return out;
-
-        } catch (RSRuntimeException e) {
-            // on some devices RenderScript.create() throws: android.support.v8.renderscript.RSRuntimeException: Error loading libRSSupport library
-            if (BuildConfig.DEBUG) e.printStackTrace();
-        }
 
         return StackBlur.blur(out, blurRadius);
     }

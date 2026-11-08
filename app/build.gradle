@@ -32,13 +32,16 @@ licenses {
     }
 }
 
+tasks.withType(com.cmgapps.license.AndroidLicensesTask).configureEach {
+    notCompatibleWithConfigurationCache("AndroidLicensesTask does not support configuration cache")
+}
+
 android {
     compileSdk 34
     namespace 'com.poupa.vinylmusicplayer'
     defaultConfig {
         minSdk = 19
         targetSdk = 33
-        renderscriptTargetApi = 33
 
         vectorDrawables.useSupportLibrary = true
 
