@@ -87,7 +87,7 @@ public class ReplayGainTagExtractor {
     return tags;
   }
 
-  private static Map<String, Float> parseTags(Tag tag) {
+  static Map<String, Float> parseTags(Tag tag) {
     Map<String, Float> tags = new HashMap<>();
 
     if (tag.hasField(REPLAYGAIN_TRACK_GAIN)) {
@@ -106,7 +106,7 @@ public class ReplayGainTagExtractor {
     return tags;
   }
 
-  private static Map<String, Float> parseMp4Tags(Tag tag) {
+  static Map<String, Float> parseMp4Tags(Tag tag) {
     Map<String, Float> tags = parseTags(tag);
 
     final String ITUNES_PREFIX = "----:com.apple.iTunes:";
@@ -195,7 +195,8 @@ public class ReplayGainTagExtractor {
     return (x & 0xFF);
   }
 
-  private static float parseFloat(String s) {
+  static float parseFloat(String s) {
+    if (s == null) return 0.0f;
     float result = 0.0f;
     try {
       s = s.replaceAll("[^0-9.-]","");

@@ -68,6 +68,7 @@ import com.poupa.vinylmusicplayer.util.PackageValidator;
 import com.poupa.vinylmusicplayer.util.PlaylistsUtil;
 import com.poupa.vinylmusicplayer.util.PrefKey;
 import com.poupa.vinylmusicplayer.util.PreferenceUtil;
+import com.poupa.vinylmusicplayer.util.ReplayGainCalculator;
 import com.poupa.vinylmusicplayer.util.SafeToast;
 
 import java.io.InputStream;
@@ -1047,42 +1048,18 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
             if (playback == null) {return;}
 
             final String mode = PreferenceUtil.getInstance().getReplayGainSourceMode();
-            if (!mode.equals(PreferenceUtil.RG_SOURCE_MODE_NONE)) {
-                Song song = getCurrentSong();
+            final Song song = getCurrentSong();
+            final float adjustDB = ReplayGainCalculator.calculateAdjustDb(
+                    mode,
+                    song.replayGainTrack,
+                    song.replayGainAlbum,
+                    song.replayGainPeakTrack,
+                    song.replayGainPeakAlbum,
+                    PreferenceUtil.getInstance().getRgPreampWithTag(),
+                    PreferenceUtil.getInstance().getRgPreampWithoutTag()
+            );
 
-                float adjustDB = 0.0f;
-                float peak = 1.0f;
-
-                float rgTrack = song.replayGainTrack;
-                float rgAlbum = song.replayGainAlbum;
-                float rgpTrack = song.replayGainPeakTrack;
-                float rgpAlbum = song.replayGainPeakAlbum;
-
-                if (mode == PreferenceUtil.RG_SOURCE_MODE_ALBUM) {
-                    adjustDB = (rgTrack == 0.0f ? adjustDB : rgTrack);
-                    adjustDB = (rgAlbum == 0.0f ? adjustDB : rgAlbum);
-                    peak = (rgpTrack == 1.0f ? peak : rgpTrack);
-                    peak = (rgpAlbum == 1.0f ? peak : rgpAlbum);
-                } else if (mode == PreferenceUtil.RG_SOURCE_MODE_TRACK) {
-                    adjustDB = (rgAlbum == 0.0f ? adjustDB : rgAlbum);
-                    adjustDB = (rgTrack == 0.0f ? adjustDB : rgTrack);
-                    peak = (rgpAlbum == 1.0f ? peak : rgpAlbum);
-                    peak = (rgpTrack == 1.0f ? peak : rgpTrack);
-                }
-
-                if (adjustDB == 0) {
-                    adjustDB = PreferenceUtil.getInstance().getRgPreampWithoutTag();
-                } else {
-                    adjustDB += PreferenceUtil.getInstance().getRgPreampWithTag();
-
-                    float peakDB = -20.0f * ((float) Math.log10(peak));
-                    adjustDB = Math.min(adjustDB, peakDB);
-                }
-
-                playback.setReplayGain(adjustDB);
-            } else {
-                playback.setReplayGain(Float.NaN);
-            }
+            playback.setReplayGain(adjustDB);
         }
     }
 
