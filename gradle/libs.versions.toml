@@ -5,7 +5,7 @@ kotlin = "1.9.24"
 licenses-plugin = "4.7.0"
 
 # AndroidX
-annotation = "1.8.0"
+annotation = "1.9.1"
 appcompat = "1.6.1"
 constraintlayout = "2.1.4"
 core-ktx = "1.13.1"
@@ -32,16 +32,16 @@ advrecyclerview = "0.11.0"
 
 # Media & Utils
 glide = "4.16.0"
-gson = "2.10.1"
+gson = "2.11.0"
 jaudiotagger = "v3.0.1o"
 markwon = "4.6.2"
 retrofit = "2.11.0"
-desugar-jdk-libs = "2.0.4"
+desugar-jdk-libs = "2.1.5"
 
 # Test
 junit = "4.13.2"
 truth = "1.4.2"
-dependency-updates = "0.51.0"
+dependency-updates = "0.52.0"
 
 [libraries]
 # Gradle Plugins (classpath dependencies)
