@@ -310,4 +310,6 @@
     <string name="saf_guide_slide2_description">Musisz wybrać główny katalog swojej karty SD</string>
     <string name="saf_guide_slide3_title">Kliknij \"wybierz\" na dole ekranu</string>
     <string name="saf_guide_slide3_description">Nie otwieraj żadnych podkatalogów</string>
+    <string name="pref_title_use_exoplayer">Użyj eksperymentalnego silnika odtwarzania</string>
+    <string name="pref_summary_use_exoplayer">Użyj eksperymentalnego silnika odtwarzania opartego na Media3</string>
 </resources>

@@ -387,4 +387,6 @@
     <string name="remove_x_songs_from_playlist"><![CDATA[Retirer <b>%1$d</b> titres de la playlist ?]]></string>
     <string name="not_listed_in_media_store"><![CDATA[<b>%s</b> n\'est pas dans le catalogue de médias]]></string>
     <string name="do_you_want_to_remove_from_the_blacklist"><![CDATA[Voulez-vous retirer <b>%1$s</b> de la liste noire ?]]></string>
+    <string name="pref_title_use_exoplayer">Utiliser le moteur de lecture expérimental</string>
+    <string name="pref_summary_use_exoplayer">Utiliser le moteur de lecture expérimental basé sur Media3</string>
 </resources>

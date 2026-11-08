@@ -264,4 +264,6 @@
     <string name="library_categories">Categorii</string>
     <string name="pref_summary_library_categories">Configurați vizibilitatea și ordinea categoriilor din bibliotecă</string>
     <string name="you_have_to_select_at_least_one_category">Trebuie să selectați cel puțin o categorie.</string>
+    <string name="pref_title_use_exoplayer">Utilizează motorul de redare experimental</string>
+    <string name="pref_summary_use_exoplayer">Utilizează motorul de redare experimental bazat pe Media3</string>
 </resources>

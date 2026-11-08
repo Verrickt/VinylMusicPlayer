@@ -264,4 +264,6 @@
     <string name="library_categories">音樂庫類別</string>
     <string name="pref_summary_library_categories">調整音樂庫類別的顯示與排序</string>
     <string name="you_have_to_select_at_least_one_category">你至少要選擇 1 個類別</string>
+    <string name="pref_title_use_exoplayer">使用實驗性播放引擎</string>
+    <string name="pref_summary_use_exoplayer">使用基於Media3的實驗性播放引擎</string>
 </resources>

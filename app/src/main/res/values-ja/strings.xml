@@ -255,4 +255,6 @@
     <string name="pref_summary_blacklist">ブラックリストにあるコンテンツはライブラリに表示されません。</string>
     <string name="reset_artist_image">アーティスト画像をリセット</string>
     <string name="set_artist_image">アーティスト画像をセット</string>
+    <string name="pref_title_use_exoplayer">実験的再生エンジンを使用</string>
+    <string name="pref_summary_use_exoplayer">Media3ベースの実験的再生エンジンを使用します</string>
 </resources>

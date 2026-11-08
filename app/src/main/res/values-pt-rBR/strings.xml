@@ -371,4 +371,6 @@
     <string name="whitelist">Lista branca</string>
     <string name="pref_summary_whitelist">Apenas mostre o conteúdo abaixo da pasta inicial: </string>
 
+    <string name="pref_title_use_exoplayer">Usar mecanismo de reprodução experimental</string>
+    <string name="pref_summary_use_exoplayer">Usar mecanismo de reprodução experimental baseado no Media3</string>
 </resources>

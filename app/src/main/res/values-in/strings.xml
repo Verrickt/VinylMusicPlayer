@@ -222,4 +222,6 @@
     <string name="app_shortcut_top_tracks_short">Sering Diputar</string>
     <string name="app_shortcut_last_added_short">@string/last_added</string>
     <string name="playlist_is_empty">Daftar putar kosong</string>
+    <string name="pref_title_use_exoplayer">Gunakan mesin pemutar eksperimental</string>
+    <string name="pref_summary_use_exoplayer">Gunakan mesin pemutar eksperimental berbasis Media3</string>
 </resources>

@@ -224,4 +224,6 @@
     <string name="app_shortcut_top_tracks_short">Κορυφαία Κομμάτια</string>
     <string name="app_shortcut_last_added_short">@string/last_added</string>
     <string name="playlist_is_empty">Η Λίστα αναπαραγωγής είναι κενή</string>
+    <string name="pref_title_use_exoplayer">Χρήση πειραματικής μηχανής αναπαραγωγής</string>
+    <string name="pref_summary_use_exoplayer">Χρήση πειραματικής μηχανής αναπαραγωγής βασισμένης στο Media3</string>
 </resources>

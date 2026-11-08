@@ -242,4 +242,6 @@
     <string name="app_shortcut_top_tracks_short">Top Dalok</string>
     <string name="app_shortcut_last_added_short">@string/last_added</string>
     <string name="playlist_is_empty">A lejátszási lista üres</string>
+    <string name="pref_title_use_exoplayer">Kísérleti lejátszómotor használata</string>
+    <string name="pref_summary_use_exoplayer">Media3-alapú kísérleti lejátszómotor használata</string>
 </resources>

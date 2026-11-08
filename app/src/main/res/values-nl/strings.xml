@@ -379,4 +379,6 @@
     <string name="pref_summary_whitelist">Toon alleen inhoud onder de startmap: </string>
     <string name="write_permission">Vraag altijd om toestemming om te schrijven</string>
     <string name="pref_summary_write_permission">Om een reeds verleende toestemming in te trekken, ga je naar Android-instellingen voor deze app en vervolgens &quot;Opslag &amp; cache&quot; en externe opslag intrekken</string>
+    <string name="pref_title_use_exoplayer">Experimentele afspeelengine gebruiken</string>
+    <string name="pref_summary_use_exoplayer">Experimentele afspeelengine gebruiken op basis van Media3</string>
 </resources>

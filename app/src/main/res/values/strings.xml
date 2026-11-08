@@ -157,8 +157,8 @@
     <string name="pref_title_colored_notification">Colored notification</string>
     <string name="pref_title_classic_notification">Classic notification design</string>
     <string name="pref_title_gapless_playback">Gapless playback</string>
-    <string name="pref_title_use_exoplayer">ExoPlayer engine</string>
-    <string name="pref_summary_use_exoplayer">Use modern AndroidX Media3/ExoPlayer for true gapless playback and enhanced audio format support</string>
+    <string name="pref_title_use_exoplayer">Use experimental playback engine</string>
+    <string name="pref_summary_use_exoplayer">Use experimental playback engine based on Media3</string>
     <string name="pref_title_audio_ducking">Reduce volume on focus loss</string>
     <string name="pref_title_recently_played_interval">Recently played playlist interval</string>
     <string name="pref_title_not_recently_played_interval">Not recently played playlist interval</string>

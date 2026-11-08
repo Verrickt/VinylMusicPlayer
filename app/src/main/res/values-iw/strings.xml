@@ -262,4 +262,6 @@
     <string name="set_artist_image">הגדר תמונת אמן</string>
     <string name="library_categories">קטגוריות הספרייה</string>
     <string name="pref_summary_library_categories">הגדר את הנראות והסדר של הקטגוריות בספרייה.</string>
+    <string name="pref_title_use_exoplayer">השתמש במנוע השמעה ניסיוני</string>
+    <string name="pref_summary_use_exoplayer">השתמש במנוע השמעה ניסיוני המבוסס על Media3</string>
 </resources>

@@ -198,4 +198,6 @@
     <string name="bug_report_uploading">يتم رفع المشكلة إلى GitHub</string>
     <string name="bug_report_failed">غير قادر علي إرسال تقرير</string>
     <string name="bug_report_failed_wrong_credentials">اسم مستخدم او كلمة مرور خاطئه</string>
+    <string name="pref_title_use_exoplayer">استخدام محرك التشغيل التجريبي</string>
+    <string name="pref_summary_use_exoplayer">استخدام محرك التشغيل التجريبي القائم على Media3</string>
 </resources>

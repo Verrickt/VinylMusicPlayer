@@ -355,4 +355,6 @@
     <string name="auto_limited_listing_subtitle">Apri l\'app per vedere l\'elenco completo</string>
     <string name="whitelist">Lista bianca</string>
     <string name="pref_summary_whitelist">Mostra esclusivamente il contenuto di questa cartella: </string>
+    <string name="pref_title_use_exoplayer">Usa motore di riproduzione sperimentale</string>
+    <string name="pref_summary_use_exoplayer">Usa il motore di riproduzione sperimentale basato su Media3</string>
 </resources>

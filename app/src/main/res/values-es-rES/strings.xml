@@ -258,4 +258,6 @@
 El contenido de las carpetas de la lista negra está oculto en tu biblioteca"</string>
     <string name="reset_artist_image">Restablecer la imagen del artista</string>
     <string name="set_artist_image">Establecer la imagen del artista</string>
+    <string name="pref_title_use_exoplayer">Usar motor de reproducción experimental</string>
+    <string name="pref_summary_use_exoplayer">Usar motor de reproducción experimental basado en Media3</string>
 </resources>

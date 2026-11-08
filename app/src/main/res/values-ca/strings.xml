@@ -381,4 +381,6 @@
     <string name="saf_guide_slide2_description_android_r">Heu de seleccionar el directori de la targeta SD que conté la música (no pot ser el directori arrel)</string>
     <string name="access_not_granted">No s\'ha permès l\'accés, no s\'ha desat</string>
     <string name="android13_storage_perm_error">No s\'ha concedit el permís de lectura de fitxers d\'àudio a l\'aplicació.</string>
+    <string name="pref_title_use_exoplayer">Utilitza el motor de reproducció experimental</string>
+    <string name="pref_summary_use_exoplayer">Utilitza el motor de reproducció experimental basat en Media3</string>
 </resources>

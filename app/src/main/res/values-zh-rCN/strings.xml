@@ -122,8 +122,8 @@
     <string name="pref_title_classic_notification">经典通知样式</string>
     <!--string name="pref_title_ignore_media_store_artwork">忽略媒体储存中的专辑封面</string-->
     <string name="pref_title_gapless_playback">无缝播放</string>
-    <string name="pref_title_use_exoplayer">ExoPlayer 播放引擎</string>
-    <string name="pref_summary_use_exoplayer">使用现代 AndroidX Media3/ExoPlayer 引擎，支持真正的无缝播放与高码率格式</string>
+    <string name="pref_title_use_exoplayer">使用实验性播放引擎</string>
+    <string name="pref_summary_use_exoplayer">使用基于Media3的实验性播放引擎</string>
     <string name="pref_title_audio_ducking">音频焦点丢失时降低音量</string>
     <string name="pref_title_last_added_interval">最近添加播放列表间隔</string>
     <string name="pref_title_synchronized_lyrics_show">显示同步歌词</string>

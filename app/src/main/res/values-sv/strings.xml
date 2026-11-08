@@ -87,4 +87,6 @@ Vill du radera <b>%1$d</b> låtar?
     <string name="search_hint">Sök i ditt bibliotek …</string>
     <string name="new_playlist_title">Ny spellista</string>
     <string name="show_footer">visa sidfot</string>
+    <string name="pref_title_use_exoplayer">Använd experimentell uppspelningsmotor</string>
+    <string name="pref_summary_use_exoplayer">Använd experimentell uppspelningsmotor baserad på Media3</string>
 </resources>

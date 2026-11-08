@@ -252,4 +252,6 @@
     <string name="clear_blacklist">Xóa danh sách đen</string>
     <string name="do_you_want_to_clear_the_blacklist">Bạn muốn xóa danh sách đen không?</string>
     <string name="pref_summary_blacklist">Nội dung của các thư mục chọn vào danh sách đen được ẩn trong thư viện của bạn</string>
+    <string name="pref_title_use_exoplayer">Sử dụng trình phát thử nghiệm</string>
+    <string name="pref_summary_use_exoplayer">Sử dụng trình phát thử nghiệm dựa trên Media3</string>
 </resources>

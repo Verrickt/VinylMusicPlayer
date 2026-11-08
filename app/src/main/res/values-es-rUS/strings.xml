@@ -255,4 +255,6 @@
     <string name="pref_summary_blacklist">El contenido de las carpetas de Lista negra está oculto de tu librería</string>
     <string name="reset_artist_image">Reiniciar imagen de Artista</string>
     <string name="set_artist_image">Establecer imagen de Artista</string>
+    <string name="pref_title_use_exoplayer">Usar motor de reproducción experimental</string>
+    <string name="pref_summary_use_exoplayer">Usar motor de reproducción experimental basado en Media3</string>
 </resources>

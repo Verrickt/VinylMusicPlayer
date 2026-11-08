@@ -223,4 +223,6 @@
     <string name="app_shortcut_top_tracks_short">Най - често слушани</string>
     <string name="app_shortcut_last_added_short">Последно_добавени</string>
     <string name="playlist_is_empty">Плейлистът е празен</string>
+    <string name="pref_title_use_exoplayer">Използване на експериментален плейър</string>
+    <string name="pref_summary_use_exoplayer">Използване на експериментален плейър, базиран на Media3</string>
 </resources>

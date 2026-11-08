@@ -422,4 +422,6 @@
     <string name="write_permission">Immer nach Berechtigung zum Schreiben fragen</string>
     <string name="pref_summary_write_permission">To revoke already granted permission, go to android settings for this app, then &quot;Storage &amp; cache&quot; and revoke external storage</string>
 
+    <string name="pref_title_use_exoplayer">Experimentelle Wiedergabe-Engine verwenden</string>
+    <string name="pref_summary_use_exoplayer">Experimentelle Wiedergabe-Engine basierend auf Media3 verwenden</string>
 </resources>

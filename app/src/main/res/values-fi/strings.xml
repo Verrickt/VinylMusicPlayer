@@ -249,4 +249,6 @@
     <string name="pref_summary_blacklist">Estolistalla olevien hakemistojen sisältö piilotetaan kirjastoltasi</string>
     <string name="library_categories">Kirjaston välilehdet</string>
     <string name="pref_summary_library_categories">Määrittele kirjaston välilehtien näkyvyyttä ja järjestystä</string>
+    <string name="pref_title_use_exoplayer">Käytä kokeellista toistomoottoria</string>
+    <string name="pref_summary_use_exoplayer">Käytä Media3-pohjaista kokeellista toistomoottoria</string>
 </resources>

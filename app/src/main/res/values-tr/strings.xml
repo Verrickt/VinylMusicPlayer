@@ -290,4 +290,6 @@
     <string name="pref_title_rg_preamp">ReplayGain preamp</string>
     <string name="pref_summary_rg_preamp">Set preamp when ReplayGain is enabled</string>
     <string name="error_no_app_for_intent">Bu sayfayı açmak için herhangi bir uygulama mevcut değil.</string>
+    <string name="pref_title_use_exoplayer">Deneysel oynatma motorunu kullan</string>
+    <string name="pref_summary_use_exoplayer">Media3 tabanlı deneysel oynatma motorunu kullan</string>
 </resources>

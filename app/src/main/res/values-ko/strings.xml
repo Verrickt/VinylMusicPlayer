@@ -358,4 +358,6 @@
     <string name="auto_limited_listing_subtitle">앱을 열면 전체 목록을 볼 수 있습니다.</string>
     <string name="whitelist">화이트리스트</string>
     <string name="pref_summary_whitelist">시작 디렉터리 아래의 내용만 표시: </string>
+    <string name="pref_title_use_exoplayer">실험적 재생 엔진 사용</string>
+    <string name="pref_summary_use_exoplayer">Media3 기반의 실험적 재생 엔진을 사용합니다</string>
 </resources>
