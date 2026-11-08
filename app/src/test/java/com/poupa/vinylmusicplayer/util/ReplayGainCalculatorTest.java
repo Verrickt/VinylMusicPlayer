@@ -1,7 +1,6 @@
 package com.poupa.vinylmusicplayer.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,11 +19,11 @@ public class ReplayGainCalculatorTest {
         float adjustDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_NONE,
                 -6.05f, -5.38f, 0.991f, 1.026f, 0.0f, 0.0f);
-        assertTrue(Float.isNaN(adjustDb));
+        assertThat(adjustDb).isNaN();
 
         float adjustDbNull = ReplayGainCalculator.calculateAdjustDb(
                 null, -6.05f, -5.38f, 0.991f, 1.026f, 0.0f, 0.0f);
-        assertTrue(Float.isNaN(adjustDbNull));
+        assertThat(adjustDbNull).isNaN();
     }
 
     /**
@@ -42,19 +41,19 @@ public class ReplayGainCalculatorTest {
         float trackModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-6.05f, trackModeDb, DELTA);
+        assertThat(trackModeDb).isWithin(DELTA).of(-6.05f);
 
         // 2. Album 模式：选择 AlbumGain (-5.38 dB)
         float albumModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_ALBUM,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-5.38f, albumModeDb, DELTA);
+        assertThat(albumModeDb).isWithin(DELTA).of(-5.38f);
 
         // 3. 附加有标签 Preamp (+2.0 dB)
         float trackWithPreamp = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 2.0f, 0.0f);
-        assertEquals(-4.05f, trackWithPreamp, DELTA);
+        assertThat(trackWithPreamp).isWithin(DELTA).of(-4.05f);
     }
 
     /**
@@ -73,12 +72,12 @@ public class ReplayGainCalculatorTest {
         float trackModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-11.98f, trackModeDb, DELTA);
+        assertThat(trackModeDb).isWithin(DELTA).of(-11.98f);
 
         float albumModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_ALBUM,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-12.56f, albumModeDb, DELTA);
+        assertThat(albumModeDb).isWithin(DELTA).of(-12.56f);
     }
 
     /**
@@ -97,7 +96,7 @@ public class ReplayGainCalculatorTest {
         float adjustDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(1.92f, adjustDb, DELTA);
+        assertThat(adjustDb).isWithin(DELTA).of(1.92f);
     }
 
     /**
@@ -114,7 +113,7 @@ public class ReplayGainCalculatorTest {
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
         // 应被限制在 +6.0206 dB
-        assertEquals(6.0206f, adjustDb, DELTA);
+        assertThat(adjustDb).isWithin(DELTA).of(6.0206f);
     }
 
     /**
@@ -132,13 +131,13 @@ public class ReplayGainCalculatorTest {
         float albumModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_ALBUM,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-10.92f, albumModeDb, DELTA);
+        assertThat(albumModeDb).isWithin(DELTA).of(-10.92f);
 
         // Track 模式正常使用单曲增益
         float trackModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-10.92f, trackModeDb, DELTA);
+        assertThat(trackModeDb).isWithin(DELTA).of(-10.92f);
     }
 
     /**
@@ -154,7 +153,7 @@ public class ReplayGainCalculatorTest {
         float trackModeDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, 0.0f);
-        assertEquals(-4.50f, trackModeDb, DELTA);
+        assertThat(trackModeDb).isWithin(DELTA).of(-4.50f);
     }
 
     /**
@@ -172,7 +171,7 @@ public class ReplayGainCalculatorTest {
         float adjustDb = ReplayGainCalculator.calculateAdjustDb(
                 PreferenceUtil.RG_SOURCE_MODE_TRACK,
                 rgTrack, rgAlbum, rgpTrack, rgpAlbum, 0.0f, preampWithoutTag);
-        assertEquals(-3.0f, adjustDb, DELTA);
+        assertThat(adjustDb).isWithin(DELTA).of(-3.0f);
     }
 
     /**
@@ -185,11 +184,11 @@ public class ReplayGainCalculatorTest {
 
         float trackDb = ReplayGainCalculator.calculateAdjustDb(
                 dynamicTrackMode, -5.0f, -4.0f, 1.0f, 1.0f, 0.0f, 0.0f);
-        assertEquals(-5.0f, trackDb, DELTA);
+        assertThat(trackDb).isWithin(DELTA).of(-5.0f);
 
         float albumDb = ReplayGainCalculator.calculateAdjustDb(
                 dynamicAlbumMode, -5.0f, -4.0f, 1.0f, 1.0f, 0.0f, 0.0f);
-        assertEquals(-4.0f, albumDb, DELTA);
+        assertThat(albumDb).isWithin(DELTA).of(-4.0f);
     }
 
     /**
@@ -198,21 +197,21 @@ public class ReplayGainCalculatorTest {
     @Test
     public void testLinearVolumeConversion() {
         // 0 dB -> 1.0f
-        assertEquals(1.0f, ReplayGainCalculator.calculateLinearVolume(0.0f, 1.0f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(0.0f, 1.0f)).isWithin(DELTA).of(1.0f);
 
         // -6.0206 dB -> ~0.5f (半音量)
-        assertEquals(0.5f, ReplayGainCalculator.calculateLinearVolume(-6.0206f, 1.0f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(-6.0206f, 1.0f)).isWithin(DELTA).of(0.5f);
 
         // -20 dB -> 0.1f
-        assertEquals(0.1f, ReplayGainCalculator.calculateLinearVolume(-20.0f, 1.0f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(-20.0f, 1.0f)).isWithin(DELTA).of(0.1f);
 
         // 正增益被上限截断至 1.0f
-        assertEquals(1.0f, ReplayGainCalculator.calculateLinearVolume(6.0f, 1.0f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(6.0f, 1.0f)).isWithin(DELTA).of(1.0f);
 
         // NaN -> 默认 1.0f
-        assertEquals(1.0f, ReplayGainCalculator.calculateLinearVolume(Float.NaN, 1.0f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(Float.NaN, 1.0f)).isWithin(DELTA).of(1.0f);
 
         // 包含 Ducking 因子 0.2f
-        assertEquals(0.1f, ReplayGainCalculator.calculateLinearVolume(-6.0206f, 0.2f), DELTA);
+        assertThat(ReplayGainCalculator.calculateLinearVolume(-6.0206f, 0.2f)).isWithin(DELTA).of(0.1f);
     }
 }

@@ -40,6 +40,8 @@ desugar-jdk-libs = "2.0.4"
 
 # Test
 junit = "4.13.2"
+truth = "1.4.2"
+dependency-updates = "0.51.0"
 
 [libraries]
 # Gradle Plugins (classpath dependencies)
@@ -101,6 +103,7 @@ desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref 
 
 # Test
 junit = { module = "junit:junit", version.ref = "junit" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 
 [bundles]
 material-dialogs = ["material-dialogs-core", "material-dialogs-commons"]
@@ -113,3 +116,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 licenses = { id = "com.cmgapps.licenses", version.ref = "licenses-plugin" }
+dependency-updates = { id = "com.github.ben-manes.versions", version.ref = "dependency-updates" }

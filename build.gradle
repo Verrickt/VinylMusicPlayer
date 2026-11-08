@@ -11,6 +11,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:8.4.0'
         classpath 'com.cmgapps:gradle-licenses-plugin:4.7.0' // For dependencies license report
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.51.0'
     }
 }
 
@@ -19,6 +20,19 @@ allprojects {
         mavenCentral()
         google()
         maven { url 'https://jitpack.io' }
+    }
+}
+
+apply plugin: 'com.github.ben-manes.versions'
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
     }
 }
 
