@@ -235,7 +235,7 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
             playbackHandlerThread.start();
             playbackHandler = new PlaybackHandler(this, playbackHandlerThread.getLooper());
 
-            playback = new MultiPlayer(this);
+            playback = createPlayback();
             playback.setCallbacks(this);
         }
 
@@ -1219,9 +1219,44 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
         wakeLock.acquire(milli);
     }
 
+    private Playback createPlayback() {
+        if (PreferenceUtil.getInstance().useExoPlayer()) {
+            return new ExoPlayerPlayback(this);
+        } else {
+            return new MultiPlayer(this);
+        }
+    }
+
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, @Nullable final String key) {
-        if (TextUtils.equals(key, PreferenceUtil.GAPLESS_PLAYBACK)) {
+        if (TextUtils.equals(key, PreferenceUtil.USE_EXOPLAYER)) {
+            synchronized (this) {
+                final boolean isCurrentPlaying = (playback != null && playback.isPlaying());
+                final int currentPos = (playback != null ? playback.position() : 0);
+                closeAudioEffectSession();
+                if (playback != null) {
+                    playback.release();
+                }
+                playback = createPlayback();
+                playback.setCallbacks(this);
+
+                final Song currentSong = getCurrentSong();
+                if (currentSong != null && currentSong.id != -1) {
+                    final boolean prepared = openCurrent();
+                    if (prepared) {
+                        if (currentPos > 0) {
+                            playback.seek(currentPos);
+                        }
+                        if (isCurrentPlaying) {
+                            playback.start();
+                        }
+                        prepareNextImpl();
+                    }
+                    notifyChange(META_CHANGED);
+                    notifyChange(PLAY_STATE_CHANGED);
+                }
+            }
+        } else if (TextUtils.equals(key, PreferenceUtil.GAPLESS_PLAYBACK)) {
             synchronized (this) {
                 if (sharedPreferences.getBoolean(key, false)) {
                     prepareNext();

@@ -7,6 +7,13 @@
         <com.kabouzeid.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
+            android:key="use_exoplayer"
+            android:summary="@string/pref_summary_use_exoplayer"
+            android:title="@string/pref_title_use_exoplayer" />
+
+        <com.kabouzeid.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+            app:iconSpaceReserved="false"
+            android:defaultValue="true"
             android:key="audio_ducking"
             android:summary="@string/pref_summary_audio_ducking"
             android:title="@string/pref_title_audio_ducking" />

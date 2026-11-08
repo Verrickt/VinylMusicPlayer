@@ -92,6 +92,7 @@ public final class PreferenceUtil {
     public static final String AUDIO_DUCKING = PrefKey.exportableKey("audio_ducking");
     @NonNls
     public static final String GAPLESS_PLAYBACK = PrefKey.exportableKey("gapless_playback");
+    public static final String USE_EXOPLAYER = PrefKey.exportableKey("use_exoplayer");
     public static final String EQUALIZER = PrefKey.exportableKey("equalizer");
 
     public static final String LAST_ADDED_CUTOFF_V2 = PrefKey.exportableKey("last_added_interval_v2");
@@ -354,6 +355,16 @@ public final class PreferenceUtil {
 
     public boolean gaplessPlayback() {
         return mPreferences.getBoolean(GAPLESS_PLAYBACK, false);
+    }
+
+    public void setUseExoPlayer(final boolean value) {
+        mPreferences.edit()
+                .putBoolean(USE_EXOPLAYER, value)
+                .apply();
+    }
+
+    public boolean useExoPlayer() {
+        return mPreferences.getBoolean(USE_EXOPLAYER, true);
     }
 
     public void setAudioDucking(final boolean value) {

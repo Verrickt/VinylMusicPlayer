@@ -15,6 +15,7 @@
 
 # Desktop Java classes, we are on Android -> hide this false positive
 -dontwarn java.awt.**
+-dontwarn java.lang.reflect.AnnotatedType
 -dontwarn javax.imageio.**
 -dontwarn javax.lang.model.**
 -dontwarn javax.swing.**
