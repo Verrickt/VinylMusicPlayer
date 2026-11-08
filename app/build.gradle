@@ -10,7 +10,7 @@ licenses {
         // Enable this JSON generation to get the full data structure
         // json {
         //    enabled = true
-        //    destination = file("$buildDir/reports/licenses/dependencies-licenses.json")
+        //    destination = layout.buildDirectory.file("reports/licenses/dependencies-licenses.json").get().asFile
         //}
 
         html.enabled = false // html is enabled by default
@@ -18,7 +18,7 @@ licenses {
         // Generate CSV format
         custom {
             enabled = true
-            destination = file("$buildDir/reports/licenses/dependencies-licenses.csv")
+            destination = layout.buildDirectory.file("reports/licenses/dependencies-licenses.csv").get().asFile
             generate {
                 final Collection list -> list.collect{
                     [
@@ -36,9 +36,9 @@ android {
     compileSdk 34
     namespace 'com.poupa.vinylmusicplayer'
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 33
-        renderscriptTargetApi 33
+        minSdk = 19
+        targetSdk = 33
+        renderscriptTargetApi = 33
 
         vectorDrawables.useSupportLibrary = true
 
@@ -71,7 +71,7 @@ android {
             versionNameSuffix ' DEBUG'
         }
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += ['META-INF/LICENSE', 'META-INF/NOTICE']
         }
