@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.11.0-rev2] - 2026-11-09
+
+### Features
+
+* Introduce modern AndroidX Media3 (ExoPlayer 1.3.1) audio playback engine for true sample-accurate gapless playback and enhanced audio format compatibility
+* Dual-engine architecture: Add "Use experimental playback engine" / "使用实验性播放引擎" setting toggle in Audio preferences with seamless runtime switching and fallback to legacy MediaPlayer (`MultiPlayer`)
+* Complete localized translations for the new setting across all 33 supported languages
+
+### Build & Dev-Exp Modernization
+
+* Upgrade Gradle Wrapper to 8.10.2 (aligned with project Kotlin 1.9.24)
+* Enable stable Gradle Configuration Cache and local Build Cache (`org.gradle.caching=true`), reducing incremental build time by ~82%
+* Migrate dependencies to Gradle Version Catalog (`gradle/libs.versions.toml`)
+* Modernize AGP DSL (`packaging`, `minSdk = 19`, `targetSdk = 33`, remove `$buildDir` deprecations)
+* Align Glide module versions to 4.16.0 (`glide`, `okhttp3-integration`, `compiler`)
+* Integrate Google Truth for unit testing fluent assertions
+* Add `com.github.ben-manes.versions` plugin for automated dependency health and update scanning
+
+### Compatibility & Refactoring
+
+* Upgrade `desugar_jdk_libs` from 2.0.4 to 2.1.5 for comprehensive modern Java API support on Android 4.4+
+* Modernize `AndroidManifest.xml`: declare `FOREGROUND_SERVICE_MEDIA_PLAYBACK` permission and service type for Android 14+ background playback stability
+* Enable predictive back navigation (`android:enableOnBackInvokedCallback="true"`)
+* Remove obsolete `android.max_aspect` 2.1 screen constraint for modern tall/foldable displays
+* Remove deprecated `RenderScript` toolchain and imports, migrating image blur completely to multi-threaded CPU `StackBlur`
+* Fix Licenses task configuration cache serialization compatibility
+
 ## [1.11.0-rev1] - 2026-11-09
 
 ### Fixes
