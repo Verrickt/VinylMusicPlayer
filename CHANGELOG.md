@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.11.0-rev1] - 2026-11-09
+
+### Fixes
+
+* Fix ReplayGain audio volume adjustment not taking effect during playback due to string reference equality comparison in `MusicService`
+* Add null-safety check in `ReplayGainTagExtractor.parseFloat` to prevent potential exceptions on malformed tag values
+
+### Improvements & Refactoring
+
+* Introduce `ReplayGainCalculator` to decouple ReplayGain gain calculation and linear volume conversion from Android service lifecycle
+* Add unit test suite (`ReplayGainCalculatorTest` and `ReplayGainTagExtractorTest`) covering negative/positive gain, peak clipping limits, single-track/album fallback, and tag parsing
+* Simplify Gradle build configuration by removing obsolete distribution flavors (`playStore`, `fdroid`, `ci`)
+* Add modern GitHub Actions release workflow for automated signed APK releases
+* Add C# `TagExtractor` CLI tool for batch audio metadata inspection
+
 ## [1.11.0] - 2024-08-18
 
 ### Features
