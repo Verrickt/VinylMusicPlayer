@@ -43,5 +43,7 @@ public interface Playback {
         void onTrackWentToNext();
 
         void onTrackEnded();
+
+        default void onPlayStateChanged() {}
     }
 }

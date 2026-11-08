@@ -136,10 +136,12 @@ public class CardPlayerPlaybackControlsFragment extends AbsMusicServiceFragment 
         playPauseFab.setImageDrawable(playerFabPlayPauseDrawable); // Note: set the drawable AFTER TintHelper.setTintAuto() was called
         playPauseFab.setColorFilter(MaterialValueHelper.getPrimaryTextColor(getContext(), ColorUtil.isColorLight(fabColor)), PorterDuff.Mode.SRC_IN);
         playPauseFab.setOnClickListener(new PlayPauseButtonOnClickHandler());
-        playPauseFab.post(() -> {
-            if (playPauseFab != null) {
-                playPauseFab.setPivotX(playPauseFab.getWidth() / 2.0f);
-                playPauseFab.setPivotY(playPauseFab.getHeight() / 2.0f);
+        playPauseFab.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            int width = right - left;
+            int height = bottom - top;
+            if (width > 0 && height > 0) {
+                v.setPivotX(width / 2.0f);
+                v.setPivotY(height / 2.0f);
             }
         });
     }
@@ -211,16 +213,32 @@ public class CardPlayerPlaybackControlsFragment extends AbsMusicServiceFragment 
     }
 
     public void show() {
-        playPauseFab.animate()
-                .scaleX(1f)
-                .scaleY(1f)
-                .rotation(360f)
-                .setInterpolator(new DecelerateInterpolator())
-                .start();
+        if (playPauseFab != null) {
+            playPauseFab.animate().cancel();
+            if (playPauseFab.getWidth() > 0 && playPauseFab.getHeight() > 0) {
+                playPauseFab.setPivotX(playPauseFab.getWidth() / 2.0f);
+                playPauseFab.setPivotY(playPauseFab.getHeight() / 2.0f);
+            }
+            playPauseFab.setScaleX(0f);
+            playPauseFab.setScaleY(0f);
+            playPauseFab.setRotation(0f);
+            playPauseFab.setAlpha(1f);
+            playPauseFab.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .rotation(360f)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
+        }
     }
 
     public void hide() {
         if (playPauseFab != null) {
+            playPauseFab.animate().cancel();
+            if (playPauseFab.getWidth() > 0 && playPauseFab.getHeight() > 0) {
+                playPauseFab.setPivotX(playPauseFab.getWidth() / 2.0f);
+                playPauseFab.setPivotY(playPauseFab.getHeight() / 2.0f);
+            }
             playPauseFab.setScaleX(0f);
             playPauseFab.setScaleY(0f);
             playPauseFab.setRotation(0f);

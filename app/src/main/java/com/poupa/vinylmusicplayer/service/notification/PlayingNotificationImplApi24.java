@@ -79,7 +79,10 @@ public class PlayingNotificationImplApi24 extends PlayingNotification {
                     void update(Bitmap bitmap, int color) {
                         if (bitmap == null)
                             bitmap = BitmapFactory.decodeResource(service.getResources(), R.drawable.default_album_art);
-                        NotificationCompat.Action playPauseAction = new NotificationCompat.Action(playButtonResId,
+                        final boolean currentIsPlaying = service.isPlaying();
+                        final int currentPlayButtonResId = currentIsPlaying
+                                ? R.drawable.ic_pause_white_24dp : R.drawable.ic_play_arrow_white_24dp;
+                        NotificationCompat.Action playPauseAction = new NotificationCompat.Action(currentPlayButtonResId,
                                 service.getString(R.string.action_play_pause),
                                 retrievePlaybackAction(ACTION_TOGGLE_PAUSE));
                         NotificationCompat.Action previousAction = new NotificationCompat.Action(R.drawable.ic_skip_previous_white_24dp,
@@ -98,7 +101,7 @@ public class PlayingNotificationImplApi24 extends PlayingNotification {
                                 .setDeleteIntent(deleteIntent)
                                 .setContentTitle(song.getTitle())
                                 .setContentText(text)
-                                .setOngoing(isPlaying)
+                                .setOngoing(currentIsPlaying)
                                 .setShowWhen(false)
                                 .addAction(previousAction)
                                 .addAction(playPauseAction)

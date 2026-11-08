@@ -199,10 +199,11 @@ public class ReplayGainTagExtractor {
     if (s == null) return 0.0f;
     float result = 0.0f;
     try {
-      s = s.replaceAll("[^0-9.-]","");
-      result = Float.parseFloat(s);
-    } catch (Exception e) {
-      e.printStackTrace();
+      s = s.replaceAll("[^0-9.-]", "").trim();
+      if (!s.isEmpty() && !s.equals("-") && !s.equals(".") && !s.equals("-.")) {
+        result = Float.parseFloat(s);
+      }
+    } catch (Exception ignored) {
     }
 
     return result;

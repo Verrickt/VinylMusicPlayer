@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.PowerManager;
 import android.os.Process;
 import android.preference.PreferenceManager;
@@ -492,8 +493,11 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
                     sendChangeInternal(META_CHANGED);
                 } // else just leave the playback with the current song
 
+                updateMediaSessionMetaData();
+                updateMediaSessionPlaybackState();
                 prepareNext();
                 sendChangeInternal(QUEUE_CHANGED);
+                updateNotification();
             } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException queueCopiesOutOfSync) {
                 // fallback, when the copies of the restored queues are out of sync or the queues are corrupted
                 OopsHandler.collectStackTrace(queueCopiesOutOfSync);
@@ -1221,7 +1225,7 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
 
     private Playback createPlayback() {
         if (PreferenceUtil.getInstance().useExoPlayer()) {
-            return new ExoPlayerPlayback(this);
+            return new ExoPlayerPlayback(this, playbackHandlerThread != null ? playbackHandlerThread.getLooper() : Looper.getMainLooper());
         } else {
             return new MultiPlayer(this);
         }
@@ -1299,6 +1303,15 @@ public class MusicService extends MediaBrowserServiceCompat implements SharedPre
             if (playbackHandlerThread.isAlive()) {
                 playbackHandler.sendEmptyMessage(TRACK_ENDED);
             }
+        }
+    }
+
+    @Override
+    public void onPlayStateChanged() {
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            notifyChange(PLAY_STATE_CHANGED);
+        } else {
+            runOnUiThread(() -> notifyChange(PLAY_STATE_CHANGED));
         }
     }
 

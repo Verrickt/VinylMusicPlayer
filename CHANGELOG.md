@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.11.0-rev3] - 2026-11-09
+
+### Fixes & Improvements
+
+* **Audio & Playback Stability**:
+  * Fix ExoPlayer main-thread freeze and ANR deadlock by delegating ExoPlayer pipeline and operations to the background playback thread
+  * Enable Constant Bitrate Seeking (`setConstantBitrateSeekingEnabled(true)`) in ExoPlayer for raw ADTS AAC, headerless MP3, and AMR audio streams
+  * Fix ReplayGain negative dB value parsing regex in `ReplayGainTagExtractor` to prevent `NumberFormatException`
+* **Notification & Lockscreen Sync**:
+  * Fix race condition between `ExoPlayerPlayback.start()`/`pause()` and `notifyChange(PLAY_STATE_CHANGED)`, ensuring notification and lockscreen play/pause buttons stay in sync with audio output
+  * Add `onPlayStateChanged` callback in `Playback.PlaybackCallbacks` driven by ExoPlayer's `Player.Listener.onIsPlayingChanged`
+  * Fix notification displaying plain text action buttons on app startup/queue restoration by initializing `MediaSession` metadata in `MusicService.restoreQueuesAndPosition()`, correctly activating `NotificationCompat.MediaStyle` immediately
+* **UI & Animation**:
+  * Fix SlidingUpPanel CardPlayer FAB eccentric cycloid animation by calculating rotation pivot with `addOnLayoutChangeListener` and restoring smooth in-place 360-degree rotation
+
 ## [1.11.0-rev2] - 2026-11-09
 
 ### Features
